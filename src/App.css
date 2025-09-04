@@ -1,0 +1,563 @@
+/* === Color Variables === */
+:root {
+    --primary-color: #2c003e;   /* Deep purple */
+    --secondary-color: #9c27b0; /* Purple accent */
+    --accent-color: #ffca28;    /* Golden yellow */
+    --light-bg: #f3f3f3;        /* Light silver */
+    --dark-text: #1e1e1e;       /* Dark gray */
+}
+
+/* === Animation Keyframes === */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+        /* === Global Styles === */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--dark-text);
+    margin: 0;
+    background-color: #fff;
+}
+
+/* Fade-in helper for mount */
+.fade-in {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+/* === Navbar === */
+.navbar {
+    background-color: var(--primary-color) !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    animation: slideInDown 0.6s ease-out;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.navbar-nav .nav-link {
+    margin-right: 2rem;
+    position: relative;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+.navbar-nav .nav-item:nth-child(1) .nav-link { animation-delay: 0.1s; }
+.navbar-nav .nav-item:nth-child(2) .nav-link { animation-delay: 0.2s; }
+.navbar-nav .nav-item:nth-child(3) .nav-link { animation-delay: 0.3s; }
+.navbar-nav .nav-item:nth-child(4) .nav-link { animation-delay: 0.4s; }
+.navbar-nav .nav-item:nth-child(5) .nav-link { animation-delay: 0.5s; }
+.navbar-nav .nav-item:last-child .nav-link {
+    margin-right: 0;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--accent-color) !important;
+    transform: translateY(-2px);
+}
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 1px;
+}
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* === Hero Section === */
+.hero-section {
+    background: linear-gradient(135deg, rgba(44,0,62,0.85) 0%, rgba(52,73,94,0.85) 100%),
+                url('/assets/hero-cadcam.jpg') center/cover no-repeat;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+    animation: fadeInUp 1s ease-out;
+}
+.hero-section h1 {
+    animation: fadeInUp 1.2s ease-out 0.2s both;
+}
+.hero-section p {
+    animation: fadeInUp 1.2s ease-out 0.4s both;
+}
+.hero-section .btn {
+    animation: fadeInUp 1.2s ease-out 0.6s both;
+}
+.hero-section .btn-primary {
+    background-color: var(--secondary-color);
+    border: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.hero-section .btn-primary:hover {
+    background-color: #021c42;
+    box-shadow: 0 5px 3px rgba(247,245,245,0.3);
+    transform: translateY(-3px);
+}
+
+/* === Section Titles === */
+.section-title {
+    position: relative;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInUp 0.8s ease-out;
+}
+.section-title:after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--secondary-color);
+    animation: fadeInLeft 1s ease-out 0.5s both;
+}
+
+/* === Enhanced Service Cards === */
+.service-card {
+    transition: all 0.4s ease;
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    padding: 2rem;
+    animation: fadeInUp 0.8s ease-out;
+    opacity: 0;
+    animation-fill-mode: both;
+    position: relative;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.service-card:hover::before {
+    left: 100%;
+}
+
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+
+.service-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.service-card:hover .service-icon {
+    animation: bounce 1s ease-in-out;
+    color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* === Enhanced Button Animations === */
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Info card subtle hover */
+.info-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border: none;
+    border-radius: 10px;
+}
+.info-card:hover {
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+/* === Enhanced Image Hover Effects === */
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(156,39,176,0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+img:hover::after {
+    opacity: 1;
+}
+
+/* === Enhanced Software Badges === */
+.software-badge {
+    background: linear-gradient(135deg, var(--secondary-color), #7b1fa2);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 5px;
+    display: inline-block;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+}
+
+.software-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.software-badge:hover::before {
+    left: 100%;
+}
+
+.software-badge:hover {
+    transform: scale(1.1) rotate(2deg);
+    background: linear-gradient(135deg, var(--accent-color), #ffb300);
+    color: var(--dark-text);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* === Page Sections === */
+.page-section {
+    padding: 80px 0;
+    animation: fadeInUp 0.8s ease-out;
+    /* display: none; */
+}
+.page-section.active {
+    display: block;
+}
+
+/* === Page Transitions === */
+.page-transition {
+  transition: all 0.3s ease-in-out;
+}
+
+.page-transition.transitioning {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* === Mission Section === */
+.mission-statement {
+    background-color: var(--light-bg);
+    padding: 40px;
+    border-radius: 10px;
+    border-left: 5px solid var(--secondary-color);
+}
+
+/* (duplicate .software-badge removed; merged into Enhanced Software Badges section) */
+
+/* === Security Feature === */
+.security-feature {
+    background-color: #e8f4fc;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* === Buttons === */
+.btn-primary {
+    background-color: var(--secondary-color);
+    border: none;
+    font-weight: 600;
+}
+.btn-primary:hover {
+    background-color: #021c42;
+    box-shadow: 0 5px 3px rgba(247,245,245,0.3);
+}
+
+/* === Contact Info === */
+.contact-info {
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+/* === Footer === */
+.footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+}
+.footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+.footer a:hover {
+    text-decoration: underline;
+}
+/* Footer responsive email link */
+.footer .footer-email {
+    color: #fff;
+}
+.footer .footer-email:hover {
+    color: var(--accent-color);
+}
+
+/* === List Groups === */
+.list-group-item {
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+    transition: all 0.3s ease;
+    animation: fadeInLeft 0.6s ease-out;
+}
+.list-group-item:hover {
+    transform: translateX(5px);
+    color: var(--secondary-color);
+}
+
+/* === Dropdown Animations === */
+.dropdown-menu {
+    animation: fadeInUp 0.3s ease-out;
+    transform-origin: top;
+}
+.dropdown-item {
+    transition: all 0.2s ease;
+}
+.dropdown-item:hover {
+    background-color: var(--light-bg);
+    transform: translateX(5px);
+}
+
+/* === Logo Animation === */
+.navbar-brand img {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.navbar-brand:hover img {
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+
+/* Brand sizing and layout (responsive, no logic change) */
+.navbar-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.navbar-brand img {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+}
+@media (min-width: 768px) {
+    .navbar-brand img { width: 64px; height: 64px; }
+}
+.navbar-brand span {
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+    letter-spacing: 0.5px;
+}
+
+/* === Text Animations === */
+.animate-text {
+    overflow: hidden;
+}
+.animate-text span {
+    display: inline-block;
+    animation: fadeInUp 0.6s ease-out both;
+}
+.animate-text span:nth-child(1) { animation-delay: 0.1s; }
+.animate-text span:nth-child(2) { animation-delay: 0.2s; }
+.animate-text span:nth-child(3) { animation-delay: 0.3s; }
+.animate-text span:nth-child(4) { animation-delay: 0.4s; }
+.animate-text span:nth-child(5) { animation-delay: 0.5s; }
+.animate-text span:nth-child(6) { animation-delay: 0.6s; }
+
+
+/* Logo default */
+.logo-img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* Enlarged wrapper */
+.logo-wrapper.enlarged {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  background:white;
+  padding: 20px 40px 30px 40px; /* extra space for close button */
+  border-radius: 16px;
+  z-index: 1500;
+  box-shadow: 0 10px 40px rgba(0.7, 0.7, 0.7, 0.7);
+  animation: fadeZoomIn 0.4s forwards;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Enlarged logo size */
+.logo-wrapper.enlarged .logo-img {
+  width: 250px;
+  height: auto;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 32px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+  z-index: 1600;
+  line-height: 1;
+  padding: 0;
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+/* Animation */
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.7);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+}
