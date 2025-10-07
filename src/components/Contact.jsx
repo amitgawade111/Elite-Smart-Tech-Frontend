@@ -44,7 +44,7 @@ function Contact() {
                   </p>
                   <p>
                     <FontAwesomeIcon icon={faPhone} className="me-2" />
-                    <strong>Phone:</strong> <a href="tel:+8308588924">+91 8308588924</a>
+                    <strong>Phone:</strong> <a href="tel:+7666273653">+91 7666273653</a>
                   </p>
                  
                 </div>
