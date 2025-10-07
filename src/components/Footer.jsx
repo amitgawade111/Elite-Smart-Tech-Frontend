@@ -34,8 +34,8 @@ function Footer() {
                 info@elitesmarttech.com
               </a>
               <span className="d-none d-md-inline">|</span>
-              <a href="tel:+918308588924" className="text-decoration-none">
-                +91 8308588924
+              <a href="tel:+917666273653" className="text-decoration-none">
+                +91 7666273653
               </a>
             </div>
             <address
@@ -44,8 +44,8 @@ function Footer() {
             >
                <span style={{color:"yellowgreen",fontWeight: "bold"}}>Address :</span>
               📍 H.NO.4 ASGAON 
-              Taluka: CHANDGAD 
-              Dist: KOLHAPUR 
+               CHANDGAD, 
+               KOLHAPUR, 
               ASGAON 416509
             </address>
           </div>
